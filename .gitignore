@@ -40,9 +40,16 @@ tsconfig.tsbuildinfo
 # locks
 yarn.lock
 package-lock.json
+tags.lock
 pnpm-lock.yaml
+
+# other
+tags
+tags.temp
+/.temp
 
 # env
 .env
-
-tags.lock
+development.env
+production.env
+test.env

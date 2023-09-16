@@ -1,9 +1,7 @@
 {
+  "target": "ES2018", 
   "compilerOptions": {
-    "types": [ "bun-types" ],
-
-    "lib": ["esnext"],
-    "module": "esnext",
+    "lib": ["esnext","DOM"],
     "target": "esnext",
 
     "moduleResolution": "nodeNext",
@@ -21,4 +19,5 @@
     "src/**/*",
     "tests/**/*",
   ],
+  "esModuleInterop": true
 }
