@@ -3,7 +3,7 @@ import { MinNumberValidationRule } from '../../../../../../src/domain/validator/
 
 describe('Number must be greater than or equal to', () => {
   const minAllowedNumber = 32;
-  test('success, the resulting value is greater than or equal to the minimum number', () => {
+  test('success, the result value is greater than or equal to the minimum number', () => {
     const sut = new MinNumberValidationRule(minAllowedNumber);
     const result = sut.validate(33);
     expect(result).toEqual({ behaviour: 'RunNextRule' });

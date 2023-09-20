@@ -3,7 +3,7 @@ import { MaxNumberValidationRule } from '../../../../../../src/domain/validator/
 
 describe('Number must be less than or equal to', () => {
   const maxAllowedNumber = 32;
-  test('success, the resulting value is less than or equal to the maximum number', () => {
+  test('success, the result value is less than or equal to the maximum number', () => {
     const sut = new MaxNumberValidationRule(maxAllowedNumber);
     const result = sut.validate(31);
     expect(result).toEqual({ behaviour: 'RunNextRule' });

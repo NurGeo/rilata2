@@ -2,7 +2,7 @@ import { ValidationRuleAnswer } from '../../types';
 import { ValidationRule } from '../../validation-rule';
 
 export class PositiveNumberValidationRule extends ValidationRule<'validate', number> {
-  requirement = 'Число должно быть больше позитивным {{number}}';
+  requirement = 'Число должно быть позитивным и больше {{number}}';
 
   constructor(private positiveNumber: number = 0) {
     super();
