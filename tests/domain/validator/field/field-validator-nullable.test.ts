@@ -91,7 +91,7 @@ describe('number validate', () => {
   
   test('success, the numbers is validated', () => {
     const sut = new LiteralFieldValidator('fieldName', 'number', false, { isArray: false }, [], [new TrimStringLeadRule()]);
-    const valuesToTest = [152, 55];
+    const valuesToTest = [,152, 55];
     valuesToTest.forEach(value => {
       const result = sut.validate(value);
       expect(result.isSuccess()).toBe(true);
@@ -132,7 +132,7 @@ describe('string validate fieldName', () => {
   });
   test('success, the strings is validated', () => {
     const sut = new LiteralFieldValidator('fieldName', 'string', false, { isArray: false }, [], [new TrimStringLeadRule(), new TrimStartStringLeadRule(),new TrimEndStringLeadRule()]);
-    const valuesToTest = ['discord     ', '    vtracker    '];
+    const valuesToTest = [,'discord     ', '    vtracker    '];
     valuesToTest.forEach(value => {
       const result = sut.validate(value);
       expect(result.isSuccess()).toBe(true);
