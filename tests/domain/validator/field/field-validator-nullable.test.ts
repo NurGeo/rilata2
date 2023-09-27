@@ -8,8 +8,9 @@ import { DtoFieldValidator } from '../../../../src/domain/validator/field-valida
 
 
 describe('nullable validate address', () => {
-  const sut = FieldValidatorFixtures.contactAttrsValidatormap.address;
+  
   test('fail, passed as undefined or null parameter', () => {
+    const sut = FieldValidatorFixtures.contactAttrsValidatormap.address;
     const valuesToTest = [undefined, null];
     valuesToTest.forEach(value => {
       const result = sut.validate(value);
@@ -24,12 +25,9 @@ describe('nullable validate address', () => {
       });
     });
   });
-});
 
-
-describe('nullable validate email', () => {
-  const sut = FieldValidatorFixtures.contactAttrsValidatormap.email;
   test('fail, passed as undefined or null parameter', () => {
+    const sut = FieldValidatorFixtures.contactAttrsValidatormap.email;
     const valuesToTest = [undefined, null];
     valuesToTest.forEach(value => {
       const result = sut.validate(value);
@@ -44,12 +42,9 @@ describe('nullable validate email', () => {
       });
     });
   });
-});
 
-
-describe('nullable validate noOutField', () => {
-  const sut = FieldValidatorFixtures.contactAttrsValidatormap.noOutField;
   test('fail, passed as undefined or null parameter', () => {
+    const sut = FieldValidatorFixtures.contactAttrsValidatormap.noOutField;
     const valuesToTest = [undefined, null];
     valuesToTest.forEach(value => {
       const result = sut.validate(value);
@@ -64,12 +59,9 @@ describe('nullable validate noOutField', () => {
       });
     });
   });
-});
 
-
-describe('nullable validate fieldName', () => {
-  const sut = new LiteralFieldValidator('fieldName', 'string', true, { isArray: false }, [], [new TrimStringLeadRule()]);
   test('fail, passed as undefined or null parameter', () => {
+    const sut = new LiteralFieldValidator('fieldName', 'string', true, { isArray: false }, [], [new TrimStringLeadRule()]);
     const valuesToTest = [undefined, null];
     valuesToTest.forEach(value => {
       const result = sut.validate(value);
@@ -86,9 +78,9 @@ describe('nullable validate fieldName', () => {
   });
 });
 
-describe('number validate fieldName', () => {
-  const sut = new LiteralFieldValidator('fieldName', 'number', true, { isArray: false }, [], [new TrimStringLeadRule()]);
+describe('number validate', () => {
   test('success, numbers is validated', () => {
+    const sut = new LiteralFieldValidator('fieldName', 'number', true, { isArray: false }, [], [new TrimStringLeadRule()]);
     const valuesToTest = [152, 55];
     valuesToTest.forEach(value => {
       const result = sut.validate(value);
@@ -96,11 +88,9 @@ describe('number validate fieldName', () => {
       expect(result.value).toEqual(undefined);
     });
   });
-});
-
-describe('number validate fieldName', () => {
-  const sut = new LiteralFieldValidator('fieldName', 'number', false, { isArray: false }, [], [new TrimStringLeadRule()]);
+  
   test('success, the numbers is validated', () => {
+    const sut = new LiteralFieldValidator('fieldName', 'number', false, { isArray: false }, [], [new TrimStringLeadRule()]);
     const valuesToTest = [152, 55];
     valuesToTest.forEach(value => {
       const result = sut.validate(value);
@@ -108,23 +98,10 @@ describe('number validate fieldName', () => {
       expect(result.value).toEqual(undefined);
     });
   });
-});
 
-describe('string validate fieldName', () => {
-  const sut = new LiteralFieldValidator('fieldName', 'string', true, { isArray: false }, [], [new TrimStringLeadRule(), new TrimStartStringLeadRule(),new TrimEndStringLeadRule()]);
-  test('success, the strings is validated', () => {
-    const valuesToTest = ['discord     ', '    vtracker    '];
-    valuesToTest.forEach(value => {
-      const result = sut.validate(value);
-      expect(result.isSuccess()).toBe(true);
-      expect(result.value).toEqual(undefined);
-    });
-  });
-});
-
-describe('fail, must be number', () => {
-  const sut = new LiteralFieldValidator('fieldName', 'number', true, { isArray: false }, [], [new TrimStringLeadRule(), new TrimStartStringLeadRule(),new TrimEndStringLeadRule()]);
-  test('success, the strings is validated', () => {
+  test('fail, must be number', () => {
+    const sut = new LiteralFieldValidator('fieldName', 'number', true, { isArray: false }, [], 
+    [new TrimStringLeadRule(), new TrimStartStringLeadRule(),new TrimEndStringLeadRule()]);
     const valuesToTest = ['discord     ', '    vtracker    '];
     valuesToTest.forEach(value => {
       const result = sut.validate(value);
@@ -142,3 +119,46 @@ describe('fail, must be number', () => {
     });
   });
 });
+
+describe('string validate fieldName', () => {
+  test('success, the strings is validated', () => {
+    const sut = new LiteralFieldValidator('fieldName', 'string', true, { isArray: false }, [], [new TrimStringLeadRule(), new TrimStartStringLeadRule(),new TrimEndStringLeadRule()]);
+    const valuesToTest = ['discord     ', '    vtracker    '];
+    valuesToTest.forEach(value => {
+      const result = sut.validate(value);
+      expect(result.isSuccess()).toBe(true);
+      expect(result.value).toEqual(undefined);
+    });
+  });
+  test('success, the strings is validated', () => {
+    const sut = new LiteralFieldValidator('fieldName', 'string', false, { isArray: false }, [], [new TrimStringLeadRule(), new TrimStartStringLeadRule(),new TrimEndStringLeadRule()]);
+    const valuesToTest = ['discord     ', '    vtracker    '];
+    valuesToTest.forEach(value => {
+      const result = sut.validate(value);
+      expect(result.isSuccess()).toBe(true);
+      expect(result.value).toEqual(undefined);
+    });
+  });
+  test('success, the strings is validated', () => {
+    const sut = new LiteralFieldValidator('fieldName', 'string', true, { isArray: false }, [], [new TrimStringLeadRule(), new TrimStartStringLeadRule(),new TrimEndStringLeadRule()]);
+    const valuesToTest = [5, 2];
+    valuesToTest.forEach(value => {
+      const result = sut.validate(value);
+      expect(result.isSuccess()).toBe(false);
+      expect(result.value).toEqual(
+        {
+          fieldName: [
+            {
+              text: "Значение должно быть строковым значением",
+              hint: {}
+            }
+          ]
+        }
+      );;
+    });
+  });
+});
+
+
+
+
