@@ -18,7 +18,7 @@ describe('nullable validate address', () => {
       expect(result.value).toEqual({
         address: [
           {
-            text: "Значение не должно быть undefined или null",
+            text: "Значение не может быть пустым",
             hint: {}
           }
         ]
@@ -35,7 +35,7 @@ describe('nullable validate address', () => {
       expect(result.value).toEqual({
         email: [
           {
-            text: "Значение не должно быть undefined или null",
+            text: "Значение не может быть пустым",
             hint: {}
           }
         ]
@@ -52,7 +52,7 @@ describe('nullable validate address', () => {
       expect(result.value).toEqual({
         noOutField: [
           {
-            text: "Значение не должно быть undefined или null",
+            text: "Значение не может быть пустым",
             hint: {}
           }
         ]
@@ -69,7 +69,7 @@ describe('nullable validate address', () => {
       expect(result.value).toEqual({
         fieldName: [
           {
-            text: "Значение не должно быть undefined или null",
+            text: "Значение не может быть пустым",
             hint: {}
           }
         ]
@@ -154,7 +154,7 @@ describe('string validate fieldName', () => {
             }
           ]
         }
-      );;
+      );
     });
   });
 });
