@@ -105,7 +105,7 @@ describe('number validate', () => {
     const valuesToTest = ["A", ["Apple","Microsoft"], { name: "Apple"}, true, false];
     valuesToTest.forEach(value => {
       const result = sut.validate(value);
-      expect(result.isSuccess()).toBe(false);
+      expect(result.isFailure()).toBe(true);
       expect(result.value).toEqual(
         {
           fieldName: [
@@ -144,7 +144,7 @@ describe('string validate fieldName', () => {
     const valuesToTest = [5, 2, ["Apple","Microsoft"], { name: "Apple"}, true, false];
     valuesToTest.forEach(value => {
       const result = sut.validate(value);
-      expect(result.isSuccess()).toBe(false);
+      expect(result.isFailure()).toBe(true);
       expect(result.value).toEqual(
         {
           fieldName: [
