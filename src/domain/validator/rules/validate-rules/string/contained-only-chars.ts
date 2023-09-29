@@ -2,7 +2,7 @@ import { ValidationRuleAnswer } from '../../types';
 import { ValidationRule } from '../../validation-rule';
 
 export class ContainedOnlyCharsValidationRule extends ValidationRule<'validate', string> {
-  requirement = 'Строка должна быть равна {{onlyChars}}';
+  requirement = 'Строка должна содержать {{onlyChars}}';
 
   constructor(private onlyChars: string) {
     super();
