@@ -18,7 +18,7 @@ describe('String must be equal to value', () => {
     });
   });
 
-  test('failure, string is not equal value', () => {
+  test('success, string equal value', () => {
     const sut = new ContainedOnlyCharsValidationRule('123456789');
     const result = sut.validate('1234567899999');
     expect(result).toEqual({
@@ -26,7 +26,7 @@ describe('String must be equal to value', () => {
     });
   });
 
-  test('failure, string is not equal value', () => {
+  test('success, string equal value', () => {
     const sut = new ContainedOnlyCharsValidationRule('123456789');
     const result = sut.validate('fdsfsdf123456789hdhdfh');
     expect(result).toEqual({
