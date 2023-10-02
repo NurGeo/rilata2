@@ -17,14 +17,14 @@ import { FieldValidatorPrivateFixtures, FieldValidatorTestMocksPrivateFixtures }
     describe('Валидированная значение обязательна', () => {
 
       test('Успех, на валидацию пришло явное значение', () => {
-        const sut = new LiteralFieldValidator('fieldName', type[0], true, { isArray: false }, []);
+        const sut = new LiteralFieldValidator('fieldName', true, { isArray: false },type[0], []);
         const result = sut.validate(type[1]);
         expect(result.isSuccess()).toBe(true);
       });
 
       test('Ошибка, пришло undefined или null', () => {
         const values = [undefined, null];
-        const sut = new LiteralFieldValidator('fieldName', type[0], true, { isArray: false }, []);
+        const sut = new LiteralFieldValidator('fieldName', true, { isArray: false },type[0], []);
         values.forEach((value) => {
           const result = sut.validate(value);
           expect(result.isFailure()).toBe(true);
@@ -43,7 +43,7 @@ import { FieldValidatorPrivateFixtures, FieldValidatorTestMocksPrivateFixtures }
 
   describe('Валидированная значение обязательна', () => {
     test('Ошибка, пришло пустая строка', () => {
-      const sut = new LiteralFieldValidator('fieldName', 'number', true, { isArray: false }, []);
+      const sut = new LiteralFieldValidator('fieldName',  true, { isArray: false },'number', []);
       const result = sut.validate('');
       expect(result.isFailure()).toBe(true);
       expect(result.value).toEqual({
@@ -55,8 +55,9 @@ import { FieldValidatorPrivateFixtures, FieldValidatorTestMocksPrivateFixtures }
         ]
       });
     });
+  
     test('Ошибка, пришло пустая строка', () => {
-      const sut = new LiteralFieldValidator('fieldName', 'string', true, { isArray: false }, []);
+      const sut = new LiteralFieldValidator('fieldName',  true, { isArray: false },'string', []);
       const result = sut.validate('');
       expect(result.isFailure()).toBe(true);
       expect(result.value).toEqual({
@@ -69,7 +70,7 @@ import { FieldValidatorPrivateFixtures, FieldValidatorTestMocksPrivateFixtures }
       });
     });
     test('Ошибка, пришло пустая строка', () => {
-      const sut = new LiteralFieldValidator('fieldName', 'boolean', true, { isArray: false }, []);
+      const sut = new LiteralFieldValidator('fieldName',  true, { isArray: false }, 'boolean',[]);
       const result = sut.validate('');
       expect(result.isFailure()).toBe(true);
       expect(result.value).toEqual({
@@ -84,7 +85,7 @@ import { FieldValidatorPrivateFixtures, FieldValidatorTestMocksPrivateFixtures }
   });
 
   describe('Валидированная значение обязательна', () => {
-    const sut = new DtoFieldValidator('email', 'dto', true, { isArray: false }, FieldValidatorPrivateFixtures.emailAttrsValidatorMap);
+    const sut = new DtoFieldValidator('email',  true, { isArray: false }, 'dto', FieldValidatorPrivateFixtures.emailAttrsValidatorMap);
     const values = [undefined, null];
 
     test('Успех, на валидацию пришло явное значение', () => {
@@ -102,7 +103,7 @@ import { FieldValidatorPrivateFixtures, FieldValidatorTestMocksPrivateFixtures }
       const result = sut.validate(value);
       expect(result.isFailure()).toBe(true);
       expect(result.value).toEqual({
-        email: [
+        ___whole_value_validation_error___:  [
           {
             text: "Значение не должно быть undefined или null",
             hint: {}
@@ -116,13 +117,13 @@ import { FieldValidatorPrivateFixtures, FieldValidatorTestMocksPrivateFixtures }
       const result = sut.validate('');
       expect(result.isFailure()).toBe(true);
       expect(result.value).toEqual({
-        email: [
+        ___whole_value_validation_error___:  [
           {
             text: "Значение должно быть объектом",
             hint: {}
           }
         ]
-      });
+      }); 
     });
   });
 
@@ -130,14 +131,14 @@ import { FieldValidatorPrivateFixtures, FieldValidatorTestMocksPrivateFixtures }
   types.forEach((type) => {
     describe('Валидированная значение необязательна', () => {
       test('Успех, на валидацию пришло явное значение', () => {
-        const sut = new LiteralFieldValidator('fieldName', type[0], false, { isArray: false }, []);
+        const sut = new LiteralFieldValidator('fieldName',  false, { isArray: false }, type[0],[]);
         const result = sut.validate(type[1]);
         expect(result.isSuccess()).toBe(true);
       });
 
       test('Ошибка, пришло undefined или null', () => {
         const values = [undefined, null];
-        const sut = new LiteralFieldValidator('fieldName', type[0], false, { isArray: false }, []);
+        const sut = new LiteralFieldValidator('fieldName', false, { isArray: false },type[0],[]);
         values.forEach((value) => {
           const result = sut.validate(value);
           expect(result.isSuccess()).toBe(true);
@@ -148,7 +149,7 @@ import { FieldValidatorPrivateFixtures, FieldValidatorTestMocksPrivateFixtures }
 
   describe('Валидированная значение необязательна', () => {
     test('Ошибка, пришло пустая строка', () => {
-      const sut = new LiteralFieldValidator('fieldName', 'number', false, { isArray: false }, []);
+      const sut = new LiteralFieldValidator('fieldName',  false, { isArray: false }, 'number',[]);
       const result = sut.validate('');
       expect(result.isFailure()).toBe(true);
       expect(result.value).toEqual({
@@ -161,13 +162,13 @@ import { FieldValidatorPrivateFixtures, FieldValidatorTestMocksPrivateFixtures }
       });
     });
     test('Ошибка, пришло пустая строка', () => {
-      const sut = new LiteralFieldValidator('fieldName', 'string', false, { isArray: false }, []);
+      const sut = new LiteralFieldValidator('fieldName',  false, { isArray: false }, 'string',[]);
       const result = sut.validate('');
       expect(result.isSuccess()).toBe(true);
     });
 
     test('неудачно, пришло пустая строка', () => {
-      const sut = new LiteralFieldValidator('fieldName', 'boolean', false, { isArray: false }, []);
+      const sut = new LiteralFieldValidator('fieldName',  false, { isArray: false },'boolean', []);
       const result = sut.validate('');
       expect(result.isFailure()).toBe(true);
       expect(result.value).toEqual({
@@ -183,7 +184,7 @@ import { FieldValidatorPrivateFixtures, FieldValidatorTestMocksPrivateFixtures }
 
 
   describe('Валидированная значение необязательна', () => {
-    const sut = new DtoFieldValidator('email', 'dto', false, { isArray: false }, FieldValidatorPrivateFixtures.emailAttrsValidatorMap);
+    const sut = new DtoFieldValidator('email', false, { isArray: false },'dto',  FieldValidatorPrivateFixtures.emailAttrsValidatorMap);
     const values = [undefined, null];
     test('Ошибка, пришло undefined или null', () => {
       values.forEach((value) => {
@@ -196,13 +197,13 @@ import { FieldValidatorPrivateFixtures, FieldValidatorTestMocksPrivateFixtures }
       const result = sut.validate('');
       expect(result.isFailure()).toBe(true);
       expect(result.value).toEqual({
-        email: [
+        ___whole_value_validation_error___:  [
           {
             text: "Значение должно быть объектом",
             hint: {}
           }
         ]
-      });
+      }); 
     });
   });
 });
