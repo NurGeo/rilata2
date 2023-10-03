@@ -4,8 +4,9 @@ import { ValidationRule } from '../../validation-rule';
 export class ContainedOnlyCharsValidationRule extends ValidationRule<'validate', string> {
   requirement = 'Строка должна содержать только {{onlyChars}}';
 
-  constructor(private onlyChars: string) {
+  constructor(private onlyChars: string, requirement?: string) {
     super();
+    if (requirement) this.requirement = requirement;
   }
 
   validate(value: string): ValidationRuleAnswer {
