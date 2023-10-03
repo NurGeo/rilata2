@@ -3,45 +3,45 @@ import { ContainedOnlyCharsValidationRule } from '../../../../../../src/domain/v
 
 describe('String must be equal to value', () => {
   test('success, string equal value', () => {
-    const sut = new ContainedOnlyCharsValidationRule('123456789');
-    const result = sut.validate('123456789');
+    const sut = new ContainedOnlyCharsValidationRule('omb');
+    const result = sut.validate('bom booob');
     expect(result).toEqual({
       behaviour: 'RunNextRule',
     });
   });
 
   test('success, string equal value', () => {
-    const sut = new ContainedOnlyCharsValidationRule('Pasword bomba');
-    const result = sut.validate('bomba Pasword');
+    const sut = new ContainedOnlyCharsValidationRule('omb');
+    const result = sut.validate('bom');
     expect(result).toEqual({
       behaviour: 'RunNextRule',
     });
   });
 
   test('success, string equal value', () => {
-    const sut = new ContainedOnlyCharsValidationRule('123456789');
-    const result = sut.validate('1234567899999');
+    const sut = new ContainedOnlyCharsValidationRule('omb');
+    const result = sut.validate('bomb');
     expect(result).toEqual({
       behaviour: 'RunNextRule',
     });
   });
 
   test('success, string equal value', () => {
-    const sut = new ContainedOnlyCharsValidationRule('123456789');
-    const result = sut.validate('fdsfsdf123456789hdhdfh');
+    const sut = new ContainedOnlyCharsValidationRule('omb');
+    const result = sut.validate('ooooo');
     expect(result).toEqual({
       behaviour: 'RunNextRule',
     });
   });
 
   test('failure, string is not equal value', () => {
-    const sut = new ContainedOnlyCharsValidationRule('hihihaha');
-    const result = sut.validate('hihi');
+    const sut = new ContainedOnlyCharsValidationRule('omb');x
+    const result = sut.validate('bom mood');
     expect(result).toEqual({
       behaviour: 'SaveErrorAndRunNextRule',
       ruleError: {
         hint: {},
-        text: 'Строка должна быть равна {{onlyChars}}',
+        text: 'Строка должна содержать только {{onlyChars}}',
       },
     });
   });
