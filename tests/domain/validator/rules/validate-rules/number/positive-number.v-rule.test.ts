@@ -28,9 +28,7 @@ describe('Number must be positive', () => {
     expect(result).toEqual({
       behaviour: 'SaveErrorAndRunNextRule',
       ruleError: {
-        hint: {
-          number: 0,
-        },
+        hint: {},
         text: 'Число должно быть положительным',
       },
     });
@@ -41,9 +39,7 @@ describe('Number must be positive', () => {
     expect(result).toEqual({
       behaviour: 'SaveErrorAndRunNextRule',
       ruleError: {
-        hint: {
-          number: 0,
-        },
+        hint: {},
         text: 'Число должно быть положительным',
       },
     });
@@ -54,9 +50,7 @@ describe('Number must be positive', () => {
     expect(result).toEqual({
       behaviour: 'SaveErrorAndRunNextRule',
       ruleError: {
-        hint: {
-          number: 0,
-        },
+        hint: {},
         text: 'Число должно быть положительным',
       },
     });
