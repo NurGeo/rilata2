@@ -25,7 +25,7 @@ describe('Line length should not be greater than', () => {
       behaviour: 'SaveErrorAndRunNextRule',
       ruleError: {
         hint: { minCount: 10 },
-        text: 'Строка должна быть не меньше {{minCount}}',
+        text: 'Длина строки должна быть больше или равно {{minCount}}',
       },
     });
   });

@@ -64,7 +64,7 @@ describe('Валидированное значение обязательно',
       fieldName: [
         {
           hint: {},
-          text: 'Сротка обязательна к заполнению',
+          text: 'Строка обязательна к заполнению',
         },
       ],
     });
@@ -93,7 +93,7 @@ describe('Валидированное значение обязательно',
       expect(result.value).toEqual({
         fieldName: [
           {
-            text: 'Длина строки должна быть не больше {{maxCount}}',
+            text: 'Длина строки должна быть меньше или равно {{maxCount}}',
             hint: {
               maxCount: 8,
             },
@@ -110,7 +110,7 @@ describe('Валидированное значение обязательно',
     expect(result.value).toEqual({
       fieldName: [
         {
-          text: 'Строка должна быть не меньше {{minCount}}',
+          text: 'Длина строки должна быть больше или равно {{minCount}}',
           hint: {
             minCount: 3,
           },
@@ -163,7 +163,7 @@ describe('Валидированное значение обязательно',
       expect(result.value).toEqual({
         fieldName: [
           {
-            text: 'Длина строки должна быть не больше {{maxCount}}',
+            text: 'Длина строки должна быть меньше или равно {{maxCount}}',
             hint: { maxCount: 8 },
           },
         ],
@@ -280,7 +280,7 @@ describe('Валидированное значение необязательн
     expect(result.value).toEqual({
       fieldName: [
         {
-          text: 'Длина строки должна быть не больше {{maxCount}}',
+          text: 'Длина строки должна быть меньше или равно {{maxCount}}',
           hint: {
             maxCount: 8,
           },
@@ -295,7 +295,7 @@ describe('Валидированное значение необязательн
     expect(result.value).toEqual({
       fieldName: [
         {
-          text: 'Длина строки должна быть не больше {{maxCount}}',
+          text: 'Длина строки должна быть меньше или равно {{maxCount}}',
           hint: {
             maxCount: 8,
           },
@@ -313,7 +313,7 @@ describe('Валидированное значение необязательн
     expect(result.value).toEqual({
       fieldName: [
         {
-          text: 'Строка должна быть не меньше {{minCount}}',
+          text: 'Длина строки должна быть больше или равно {{minCount}}',
           hint: {
             minCount: 9,
           },
@@ -355,7 +355,7 @@ describe('Валидированное значение необязательн
       expect(result.value).toEqual({
         fieldName: [
           {
-            text: 'Длина строки должна быть не больше {{maxCount}}',
+            text: 'Длина строки должна быть меньше или равно {{maxCount}}',
             hint: { maxCount: 8 },
           },
         ],
