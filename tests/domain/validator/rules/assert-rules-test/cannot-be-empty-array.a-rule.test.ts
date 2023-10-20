@@ -17,7 +17,7 @@ describe('can not empty array rule tests', () => {
       behaviour: 'SaveErrorAndBreakValidation',
       ruleError: {
         hint: {},
-        text: 'Пожалуйста, укажите информацию во всех необходимых полях',
+        text: 'Значение должно быть не пустым массивом данных',
       },
     });
   });
