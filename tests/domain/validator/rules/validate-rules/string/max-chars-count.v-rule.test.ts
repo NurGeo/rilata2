@@ -25,7 +25,7 @@ describe('Line length should not be greater than', () => {
       behaviour: 'SaveErrorAndRunNextRule',
       ruleError: {
         hint: { maxCount: 10 },
-        text: 'Длина строки должна быть не больше {{maxCount}}',
+        text: 'Длина строки должна быть меньше или равно {{maxCount}}',
       },
     });
   });
